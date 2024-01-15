@@ -42,7 +42,19 @@ class UrunWebServisTest {
     }
 
     @Test
-    void test_urun_bul() {
+    void test_urun_bul() throws Exception {
+        when(urunService.urunBul("908861"))
+                .thenReturn(
+                        new Urun("908861","Cikolatali Gofret","Ulker",40,5.5)
+                );
+
+        mockMvc.perform(get("/urun/908861"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.seriNo").value("908861"))
+                .andExpect(jsonPath("$.urunAdi").value("Cikolatali Gofret"))
+                .andExpect(jsonPath("$.urunMarka").value("Ulker"))
+                .andExpect(jsonPath("$.urunGramaj").value(40))
+                .andExpect(jsonPath("$.urunBirimFiyat").value(5.50));
     }
 
     @Test
