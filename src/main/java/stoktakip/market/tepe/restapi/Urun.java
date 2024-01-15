@@ -9,7 +9,6 @@ public class Urun {
     private double urunBirimFiyat;
 
     // Constructor
-
     public Urun(String seriNo, String urunAdi, String urunMarka, int urunGramaj, double urunBirimFiyat) {
         this.seriNo = seriNo;
         this.urunAdi = urunAdi;
@@ -19,8 +18,6 @@ public class Urun {
     }
 
     // Getter - Setters
-
-
     public String getSeriNo() {
         return seriNo;
     }

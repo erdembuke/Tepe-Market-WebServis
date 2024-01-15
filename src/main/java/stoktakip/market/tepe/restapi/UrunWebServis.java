@@ -5,10 +5,10 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
+// server.port = 8082
 @RestController
 @RequestMapping("/urun")
 public class UrunWebServis {
-
     private static final List<Urun> URUN_LIST = new ArrayList<>();
 
     // kontrol kolayligi icin statik olarak api'ye birkac mock veri girisi yapilmasi
