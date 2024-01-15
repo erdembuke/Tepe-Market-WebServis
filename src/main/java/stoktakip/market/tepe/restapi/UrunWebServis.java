@@ -43,4 +43,14 @@ public class UrunWebServis {
         URUN_LIST.add(urun);
         return urun;
     }
+
+    @DeleteMapping("/{seriNo}")
+    public boolean urunSil(@PathVariable String seriNo) {
+        Urun urun = urunBul(seriNo);
+        if (urun != null) {
+            URUN_LIST.remove(urun);
+            return true;
+        }
+        return false;
+    }
 }
