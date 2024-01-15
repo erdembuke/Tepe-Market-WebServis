@@ -14,13 +14,13 @@ public class UrunWebServis {
     // kontrol kolayligi icin statik olarak api'ye birkac mock veri girisi yapilmasi
     static {
         URUN_LIST.add(new Urun("908861","Cikolatali Gofret","Ulker",40,
-                5));
+                5.50));
         URUN_LIST.add(new Urun("908862","Kelebek Makarna","Nuh Ankara",500,
-                10));
+                10.75));
         URUN_LIST.add(new Urun("908863","Yaban Mersini","Vancouver Magic",125,
-                200));
-        URUN_LIST.add(new Urun("908864","Armut","Akdeniz Meyve",1000,45));
-        URUN_LIST.add(new Urun("908865","Kabak","Veggie World",1000,37));
+                247.85));
+        URUN_LIST.add(new Urun("908864","Armut","Akdeniz Meyve",1000,45.99));
+        URUN_LIST.add(new Urun("908865","Kabak","Veggie World",1000,37.99));
     }
 
     @GetMapping("/")
