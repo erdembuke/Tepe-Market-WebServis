@@ -1,5 +1,6 @@
 package stoktakip.market.tepe.restapi;
 
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -24,5 +25,10 @@ public class UrunWebServis {
                 3,210));
         URUN_LIST.add(new Urun("Sebze Dunyasi","Kabak","Sebze","Turkiye",
                 10,77));
+    }
+
+    @GetMapping("/")
+    public List<Urun> urunleriListele() {
+        return URUN_LIST;
     }
 }
