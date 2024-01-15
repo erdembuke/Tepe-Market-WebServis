@@ -1,6 +1,7 @@
 package stoktakip.market.tepe.restapi;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -15,20 +16,28 @@ public class UrunWebServis {
 
     // kontrol kolayligi icin statik olarak api'ye birkac mock veri girisi yapilmasi
     static {
-        URUN_LIST.add(new Urun("Ulker","Cikolatali Gofret","Gida","Turkiye",
-                5,356));
-        URUN_LIST.add(new Urun("Nuh Ankara","Cubuk Makarna","Gida","Turkiye",
-        10,550));
-        URUN_LIST.add(new Urun("Vancouver Magic","Yaban Mersini","Meyve","Kanada",
-                150,20));
-        URUN_LIST.add(new Urun("Akdeniz Manav","Sikma Portakal","Meyve","Turkiye",
-                3,210));
-        URUN_LIST.add(new Urun("Sebze Dunyasi","Kabak","Sebze","Turkiye",
-                10,77));
+        URUN_LIST.add(new Urun("908861","Cikolatali Gofret","Ulker",40,
+                5));
+        URUN_LIST.add(new Urun("908862","Kelebek Makarna","Nuh Ankara",500,
+                10));
+        URUN_LIST.add(new Urun("908863","Yaban Mersini","Vancouver Magic",125,
+                200));
+        URUN_LIST.add(new Urun("908864","Armut","Akdeniz Meyve",1000,45));
+        URUN_LIST.add(new Urun("908865","Kabak","Veggie World",1000,37));
     }
 
     @GetMapping("/")
     public List<Urun> urunleriListele() {
         return URUN_LIST;
+    }
+
+    @GetMapping("/{seriNo}")
+    public Urun urunBul(@PathVariable String seriNo) {
+        for (Urun urun : URUN_LIST) {
+            if (urun.getSeriNo().equals(seriNo)) {
+                return urun;
+            }
+        }
+        return null;
     }
 }

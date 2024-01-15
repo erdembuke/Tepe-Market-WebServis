@@ -2,30 +2,31 @@ package stoktakip.market.tepe.restapi;
 
 public class Urun {
     // Attributes
-    private String urunMarkasi;
+    private String seriNo;
     private String urunAdi;
-    private String urunTuru;
-    private String urunMensei;
-    private double urunFiyati;
-    private int urunStok;
+    private String urunMarka;
+    private int urunGramaj;
+    private double urunBirimFiyat;
 
     // Constructor
-    public Urun(String urunMarkasi, String urunAdi, String urunTuru, String urunMensei, double urunFiyati, int urunStok) {
-        this.urunMarkasi = urunMarkasi;
+
+    public Urun(String seriNo, String urunAdi, String urunMarka, int urunGramaj, double urunBirimFiyat) {
+        this.seriNo = seriNo;
         this.urunAdi = urunAdi;
-        this.urunTuru = urunTuru;
-        this.urunMensei = urunMensei;
-        this.urunFiyati = urunFiyati;
-        this.urunStok = urunStok;
+        this.urunMarka = urunMarka;
+        this.urunGramaj = urunGramaj;
+        this.urunBirimFiyat = urunBirimFiyat;
     }
 
     // Getter - Setters
-    public String getUrunMarkasi() {
-        return urunMarkasi;
+
+
+    public String getSeriNo() {
+        return seriNo;
     }
 
-    public void setUrunMarkasi(String urunMarkasi) {
-        this.urunMarkasi = urunMarkasi;
+    public void setSeriNo(String seriNo) {
+        this.seriNo = seriNo;
     }
 
     public String getUrunAdi() {
@@ -36,35 +37,27 @@ public class Urun {
         this.urunAdi = urunAdi;
     }
 
-    public String getUrunTuru() {
-        return urunTuru;
+    public String getUrunMarka() {
+        return urunMarka;
     }
 
-    public void setUrunTuru(String urunTuru) {
-        this.urunTuru = urunTuru;
+    public void setUrunMarka(String urunMarka) {
+        this.urunMarka = urunMarka;
     }
 
-    public String getUrunMensei() {
-        return urunMensei;
+    public int getUrunGramaj() {
+        return urunGramaj;
     }
 
-    public void setUrunMensei(String urunMensei) {
-        this.urunMensei = urunMensei;
+    public void setUrunGramaj(int urunGramaj) {
+        this.urunGramaj = urunGramaj;
     }
 
-    public double getUrunFiyati() {
-        return urunFiyati;
+    public double getUrunBirimFiyat() {
+        return urunBirimFiyat;
     }
 
-    public void setUrunFiyati(double urunFiyati) {
-        this.urunFiyati = urunFiyati;
-    }
-
-    public int getUrunStok() {
-        return urunStok;
-    }
-
-    public void setUrunStok(int urunStok) {
-        this.urunStok = urunStok;
+    public void setUrunBirimFiyat(double urunBirimFiyat) {
+        this.urunBirimFiyat = urunBirimFiyat;
     }
 }
