@@ -1,24 +1,39 @@
 package stoktakip.market.tepe.restapi;
 
 public class Urun {
-    private String urunadi;
+    // Attributes
+    private String urunMarkasi;
+    private String urunAdi;
     private String urunTuru;
+    private String urunMensei;
     private double urunFiyati;
     private int urunStok;
 
-    public Urun(String urunadi, String urunTuru, double urunFiyati, int urunStok) {
-        this.urunadi = urunadi;
+    // Constructor
+    public Urun(String urunMarkasi, String urunAdi, String urunTuru, String urunMensei, double urunFiyati, int urunStok) {
+        this.urunMarkasi = urunMarkasi;
+        this.urunAdi = urunAdi;
         this.urunTuru = urunTuru;
+        this.urunMensei = urunMensei;
         this.urunFiyati = urunFiyati;
         this.urunStok = urunStok;
     }
 
-    public String getUrunadi() {
-        return urunadi;
+    // Getter - Setters
+    public String getUrunMarkasi() {
+        return urunMarkasi;
     }
 
-    public void setUrunadi(String urunadi) {
-        this.urunadi = urunadi;
+    public void setUrunMarkasi(String urunMarkasi) {
+        this.urunMarkasi = urunMarkasi;
+    }
+
+    public String getUrunAdi() {
+        return urunAdi;
+    }
+
+    public void setUrunAdi(String urunAdi) {
+        this.urunAdi = urunAdi;
     }
 
     public String getUrunTuru() {
@@ -27,6 +42,14 @@ public class Urun {
 
     public void setUrunTuru(String urunTuru) {
         this.urunTuru = urunTuru;
+    }
+
+    public String getUrunMensei() {
+        return urunMensei;
+    }
+
+    public void setUrunMensei(String urunMensei) {
+        this.urunMensei = urunMensei;
     }
 
     public double getUrunFiyati() {
