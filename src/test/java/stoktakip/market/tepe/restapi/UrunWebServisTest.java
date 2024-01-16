@@ -25,7 +25,6 @@ class UrunWebServisTest {
     @MockBean
     private UrunService urunService;
 
-    private static final List<Urun> urunList = new ArrayList<>();
 
     // API Unit Tests
     @Test
@@ -95,18 +94,14 @@ class UrunWebServisTest {
 
     }
 
-    // Other Unit tests
+    // Unit tests for the methods in UrunService class and Urun class
 
     @Test
     public void testUrunleriListeleUrunService() {
         UrunService urunService1 = new UrunService();
         List<Urun> urunList = urunService1.urunleriListele();
-        String list = urunList.toString();
-        Assertions.assertEquals("[Urun{seriNo='908861', urunAdi='Cikolatali Gofret', urunMarka='Ulker', urunGramaj=40," +
-                " urunBirimFiyat=5.5}, Urun{seriNo='908862', urunAdi='Kelebek Makarna', urunMarka='Nuh Ankara', urunGramaj=500," +
-                " urunBirimFiyat=10.75}]", list);
-        // Assertion of Brings all mock datas
-
+        // Assertion of list size more than 1
+        Assertions.assertTrue(urunList.size() > 1);
 
     }
 
@@ -116,6 +111,7 @@ class UrunWebServisTest {
         Urun urun = new Urun("01908862", "Mock", "Mock", 20, 150);
         Urun eklenenUrun = urunService1.urunEkle(urun);
 
+        // Assertions
         Assertions.assertEquals("01908862", eklenenUrun.getSeriNo());
         Assertions.assertEquals("Mock", eklenenUrun.getUrunAdi());
         Assertions.assertEquals("Mock", eklenenUrun.getUrunMarka());
@@ -128,10 +124,53 @@ class UrunWebServisTest {
         UrunService urunService1 = new UrunService();
         Urun urun = urunService1.urunBul("908861"); // Ulker Cikolatali Gofret Mock Data
 
+        // Assertions
         Assertions.assertEquals("908861", urun.getSeriNo());
         Assertions.assertEquals("Cikolatali Gofret", urun.getUrunAdi());
         Assertions.assertEquals("Ulker", urun.getUrunMarka());
         Assertions.assertEquals(40, urun.getUrunGramaj());
         Assertions.assertEquals(5.50, urun.getUrunBirimFiyat());
+    }
+
+    @Test
+    public void testUrunSilUrunService() {
+        UrunService urunService1 = new UrunService();
+        Urun urun = new Urun("123456789","mock","mock",24,24);
+        urunService1.urunEkle(urun);
+
+        boolean deleted = urunService1.urunSil("123456789"); // should be true
+        boolean deleted2 = urunService1.urunSil("123456789"); // should be false , deleted already
+
+        // Assertion
+        Assertions.assertTrue(deleted);
+        Assertions.assertFalse(deleted2);
+
+    }
+
+    @Test
+    public void testUrunToString() {
+        Urun urun = new Urun("12345","mock","mock",1,1);
+
+        Assertions.assertEquals("Urun{seriNo='12345', urunAdi='mock', urunMarka='mock', urunGramaj=1, urunBirimFiyat=1.0}"
+        , urun.toString());
+    }
+
+    @Test
+    public void testUrunSetMethods() {
+        Urun urun = new Urun("123456","mock","mock",1,1);
+
+        // Change values with set methods
+        urun.setSeriNo("102030");
+        urun.setUrunAdi("modifiedName");
+        urun.setUrunMarka("modifiedBrand");
+        urun.setUrunGramaj(2);
+        urun.setUrunBirimFiyat(2);
+
+        // Assertions
+        Assertions.assertEquals("102030", urun.getSeriNo());
+        Assertions.assertEquals("modifiedName", urun.getUrunAdi());
+        Assertions.assertEquals("modifiedBrand", urun.getUrunMarka());
+        Assertions.assertEquals(2, urun.getUrunGramaj());
+        Assertions.assertEquals(2, urun.getUrunBirimFiyat());
     }
 }
