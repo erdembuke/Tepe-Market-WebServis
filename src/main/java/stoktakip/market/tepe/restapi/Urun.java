@@ -57,4 +57,15 @@ public class Urun {
     public void setUrunBirimFiyat(double urunBirimFiyat) {
         this.urunBirimFiyat = urunBirimFiyat;
     }
+
+    @Override
+    public String toString() {
+        return "Urun{" +
+                "seriNo='" + seriNo + '\'' +
+                ", urunAdi='" + urunAdi + '\'' +
+                ", urunMarka='" + urunMarka + '\'' +
+                ", urunGramaj=" + urunGramaj +
+                ", urunBirimFiyat=" + urunBirimFiyat +
+                '}';
+    }
 }

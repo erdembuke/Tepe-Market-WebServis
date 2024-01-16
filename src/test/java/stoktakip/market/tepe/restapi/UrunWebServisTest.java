@@ -1,12 +1,16 @@
 package stoktakip.market.tepe.restapi;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
+
+import java.util.ArrayList;
 import java.util.List;
+
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
@@ -20,6 +24,8 @@ class UrunWebServisTest {
 
     @MockBean
     private UrunService urunService;
+
+    private static final List<Urun> urunList = new ArrayList<>();
 
     // API Unit Tests
     @Test
@@ -87,5 +93,33 @@ class UrunWebServisTest {
                 .andExpect(status().isOk())
                 .andExpect(content().string("true"));
 
+    }
+
+    // Other Unit tests
+
+    @Test
+    public void testUrunleriListele2() {
+        UrunService urunService1 = new UrunService();
+        List<Urun> urunList = urunService1.urunleriListele();
+        String list = urunList.toString();
+        Assertions.assertEquals("[Urun{seriNo='908861', urunAdi='Cikolatali Gofret', urunMarka='Ulker', urunGramaj=40," +
+                " urunBirimFiyat=5.5}, Urun{seriNo='908862', urunAdi='Kelebek Makarna', urunMarka='Nuh Ankara', urunGramaj=500," +
+                " urunBirimFiyat=10.75}]", list);
+        // Assertion of Brings all mock datas
+
+
+    }
+
+    @Test
+    public void testUrunEkle2() {
+        UrunService urunService1 = new UrunService();
+        Urun urun = new Urun("01908862", "Mock", "Mock", 20, 150);
+        Urun eklenenUrun = urunService1.urunEkle(urun);
+
+        Assertions.assertEquals("01908862", eklenenUrun.getSeriNo());
+        Assertions.assertEquals("Mock", eklenenUrun.getUrunAdi());
+        Assertions.assertEquals("Mock", eklenenUrun.getUrunMarka());
+        Assertions.assertEquals(20, eklenenUrun.getUrunGramaj());
+        Assertions.assertEquals(150, eklenenUrun.getUrunBirimFiyat());
     }
 }
