@@ -98,7 +98,7 @@ class UrunWebServisTest {
     // Other Unit tests
 
     @Test
-    public void testUrunleriListele2() {
+    public void testUrunleriListeleUrunService() {
         UrunService urunService1 = new UrunService();
         List<Urun> urunList = urunService1.urunleriListele();
         String list = urunList.toString();
@@ -111,7 +111,7 @@ class UrunWebServisTest {
     }
 
     @Test
-    public void testUrunEkle2() {
+    public void testUrunEkleUrunService() {
         UrunService urunService1 = new UrunService();
         Urun urun = new Urun("01908862", "Mock", "Mock", 20, 150);
         Urun eklenenUrun = urunService1.urunEkle(urun);
@@ -121,5 +121,17 @@ class UrunWebServisTest {
         Assertions.assertEquals("Mock", eklenenUrun.getUrunMarka());
         Assertions.assertEquals(20, eklenenUrun.getUrunGramaj());
         Assertions.assertEquals(150, eklenenUrun.getUrunBirimFiyat());
+    }
+
+    @Test
+    public void testUrunBulUrunService() {
+        UrunService urunService1 = new UrunService();
+        Urun urun = urunService1.urunBul("908861"); // Ulker Cikolatali Gofret Mock Data
+
+        Assertions.assertEquals("908861", urun.getSeriNo());
+        Assertions.assertEquals("Cikolatali Gofret", urun.getUrunAdi());
+        Assertions.assertEquals("Ulker", urun.getUrunMarka());
+        Assertions.assertEquals(40, urun.getUrunGramaj());
+        Assertions.assertEquals(5.50, urun.getUrunBirimFiyat());
     }
 }
