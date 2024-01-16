@@ -152,6 +152,7 @@ class UrunWebServisTest {
         , urun.toString());
     }
 
+
     @Test
     public void testUrunSetMethods() {
         Urun urun = new Urun("123456","mock","mock",1,1);
